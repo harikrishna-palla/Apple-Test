@@ -1,0 +1,75 @@
+// Applying a plugin to a project allows the plugin to extend the project’s capabilities
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    //id 'war'
+}
+//effectively a namespace for identifying the artifact
+group = 'com.apple'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+//Configuration represents a group of artifacts and their dependencies
+//configuration contains the runtime classpath of this library
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
+repositories {
+    mavenCentral()
+    /*maven {
+        url "http://repo.mycompany.com/maven2"
+    }*/
+}
+//Test dependencies. This is where you should declare dependencies which are used to compile tests.
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+   /* implementation 'org.hibernate:hibernate-core:3.6.7.Final'*/
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+}
+//Test : The test task automatically detects and executes all unit tests in the test source set.
+// It also generates a report once test execution is complete
+test {
+    useJUnitPlatform()
+  //  ignoreFailures=true;
+}
+
+task hello {
+    println "Print something and write something"
+}
+
+task copy(type: Copy) {
+    description 'Copies the resource directory to the target directory.'
+    from 'C:\\SB\\DockerNew\\build\\libs\\DockerNew-0.0.1-SNAPSHOT.jar', 'C:\\SB\\DockerNew\\build\\libs\\test1\\test2\\Test.txt'
+    into 'C:\\Users\\harikrishnapa\\Desktop\\Apple Docs'
+    include('**/*.txt', '**/*.jar', '**/*.properties')
+    println("description applied")
+}
+task ensureDirectory {
+    doLast {
+        mkdir "storedFiles"
+        println("directory created")
+    }
+}
+task copyMultiFIles(type: Copy) {
+
+    description('copying muliple files')
+    from 'C:\\SB\\DockerNew\\build\\libs'
+    into 'C:\\Users\\harikrishnapa\\Desktop\\Apple Docs'
+    include('**/*.txt', '**/*.jar', '**/*.properties')
+    println('copied multiple files')
+
+}
+
+task copyReportsDirForArchiving(type: Copy) {
+    from "$buildDir/reports"
+    into "$buildDir/toArchive"
+}
