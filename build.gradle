@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '2.1.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
-    //id 'war'
+    id 'war'
 }
 //effectively a namespace for identifying the artifact
 group = 'com.apple'
@@ -42,17 +42,17 @@ test {
   //  ignoreFailures=true;
 }
 
-task hello {
+/*task hello {
     println "Print something and write something"
-}
+}*/
 
-task copy(type: Copy) {
-    description 'Copies the resource directory to the target directory.'
-    from 'C:\\SB\\DockerNew\\build\\libs\\DockerNew-0.0.1-SNAPSHOT.jar', 'C:\\SB\\DockerNew\\build\\libs\\test1\\test2\\Test.txt'
-    into 'C:\\Users\\harikrishnapa\\Desktop\\Apple Docs'
-    include('**/*.txt', '**/*.jar', '**/*.properties')
-    println("description applied")
-}
+//task copy(type: Copy) {
+//    description 'Copies the resource directory to the target directory.'
+//    from 'C:\\SB\\DockerNew\\build\\libs\\DockerNew-0.0.1-SNAPSHOT.jar', 'C:\\SB\\DockerNew\\build\\libs\\test1\\test2\\Test.txt'
+//    into 'C:\\Users\\harikrishnapa\\Desktop\\Apple Docs'
+//    include('**/*.txt', '**/*.jar', '**/*.properties')
+//    println("description applied")
+//}
 /*
 task ensureDirectory {
     doLast {
@@ -76,7 +76,7 @@ task ensureDirectory {
     mkdir "$buildDir/toArchive"
 
 }*/
-task copyReportsDirForArchiving(type: Copy) {
+/*task copyReportsDirForArchiving(type: Copy) {
     mkdir "$buildDir/toArchive"
     from "$buildDir/classes"
     into "$buildDir/toArchive"
@@ -90,7 +90,7 @@ task packageDistribution(type: Tar) {
     destinationDirectory = file("$buildDir/reports")
 
     from "$buildDir/toArchive"
-}
+}*/
 /*
 task unpackFiles(type: Copy) {
     mkdir "$buildDir/resources"
@@ -98,6 +98,7 @@ task unpackFiles(type: Copy) {
     into "$buildDir/resources"
 }
 */
+/*
 
 task uberJar(type: Jar) {
 
@@ -110,6 +111,7 @@ task uberJar(type: Jar) {
         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
     }
 }
+*/
 
 /*task moveReports {
     doLast {
@@ -117,6 +119,7 @@ task uberJar(type: Jar) {
                 todir: "${buildDir}/toArchive"
     }
 }*/
+/*
 
 task copyFromStaging(type: Copy) {
     from "${buildDir}/reports"
@@ -125,6 +128,7 @@ task copyFromStaging(type: Copy) {
     rename '(.+)-Count(.+)', '$1$2'
 }
 onfigFile = file(Paths.get('src', 'config.xml'))
+*/
 /*
 
 task packageDistribution(type: Zip) {
