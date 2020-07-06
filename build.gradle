@@ -8,7 +8,7 @@ plugins {
 //effectively a namespace for identifying the artifact
 group = 'com.apple'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 //Configuration represents a group of artifacts and their dependencies
 //configuration contains the runtime classpath of this library
@@ -27,7 +27,10 @@ repositories {
 }
 //Test dependencies. This is where you should declare dependencies which are used to compile tests.
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+   implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'io.springfox:springfox-swagger2:2.7.0'
+   // implementation 'io.springfox:springfox-swagger-ui:2.7.0'
+    /*implementation 'javax.xml.bind:jaxb-api:2.3.0'*/
    /* implementation 'org.hibernate:hibernate-core:3.6.7.Final'*/
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
